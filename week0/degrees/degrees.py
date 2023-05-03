@@ -95,19 +95,19 @@ def shortest_path(source, target):
     starting_node = Node(state=source, parent=None, action=None)
 
     # Create a queue frontier object for breadth-first search
-    frontier = QueueFrontier()
+    qfrontier = QueueFrontier()
 
     # Add the starting node to the frontier
-    frontier.add(starting_node)
+    qfrontier.add(starting_node)
 
     # Create a set to keep track of explored states
     explored = set()
 
     # Iterate until a goal node is found or the frontier is empty
-    while not frontier.empty():
+    while not qfrontier.empty():
 
         # Remove the next node from the frontier (using FIFO order)
-        node = frontier.remove()
+        node = qfrontier.remove()
 
         # If the node's state is the target, construct and return the path to it
         if node.state == target:
@@ -123,7 +123,7 @@ def shortest_path(source, target):
 
         # Find the node's neighbors and add them to the frontier if they haven't been explored yet
         for action, state in neighbors_for_person(node.state):
-            if state not in explored and not frontier.contains_state(state):
+            if state not in explored and not qfrontier.contains_state(state):
                 child_node = Node(state=state, parent=node, action=action)
                 if child_node.state == target:
                     path = []
@@ -132,7 +132,7 @@ def shortest_path(source, target):
                         child_node = child_node.parent
                     path.reverse()
                     return path
-                frontier.add(child_node)
+                qfrontier.add(child_node)
 
     # If no path is found, return None
     return None
