@@ -1,0 +1,9 @@
+The following is a test output (correct) from the large database:
+
+Loading data...
+Data loaded.
+Name: Serena Grandi     //user input
+Name: Elias Koteas      //user input
+2 degrees of separation.
+1: Serena Grandi and Francesca Neri starred in A Second Childhood
+2: Francesca Neri and Elias Koteas starred in Collateral Damage 
